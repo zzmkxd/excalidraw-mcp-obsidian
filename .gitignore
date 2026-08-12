@@ -26,4 +26,7 @@ test-output.png
 
 .DS_Store
 
-docs/
+# Generated docs (keep docs/images/ for README screenshots)
+docs/*
+!docs/images/
+!docs/images/**
