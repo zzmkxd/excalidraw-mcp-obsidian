@@ -21,6 +21,7 @@
     "smoke:all": "npm run smoke:staging && npm run smoke:verify",
     "soak:faithful": "npm run build:server && node scripts/soak-template-faithful.mjs",
     "soak:vault": "npm run build:server && node scripts/soak-vault-themes.mjs",
+    "export:workflow-guide": "npm run build:server && node scripts/export-mcp-workflow-guide.mjs",
     "type-check": "npx tsc --noEmit"
   },
   "dependencies": {
