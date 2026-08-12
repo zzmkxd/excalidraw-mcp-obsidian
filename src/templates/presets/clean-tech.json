@@ -1,0 +1,53 @@
+{
+  "name": "clean-tech",
+  "label": "简洁技术风格",
+  "description": "中性灰色调色板 + 结构化布局。适用于架构图、流程图、ER 图、数据流图。",
+
+  "surfaces": {
+    "light": { "fill": "#FFFFFF", "stroke": "#CCCCCC" },
+    "mid":   { "fill": "#F5F5F5", "stroke": "#495057" },
+    "warm":  { "fill": "#F8F8F0", "stroke": "#495057" }
+  },
+
+  "nodes": {
+    "primary":   { "fill": "#FFFFFF", "stroke": "#495057" },
+    "secondary": { "fill": "#FFFFFF", "stroke": "#ADB5BD" },
+    "accent":    { "fill": "#D6EAF8", "stroke": "#1A5276" },
+    "muted":     { "fill": "#EBEBEB", "stroke": "#6C757D" },
+    "highlight": { "fill": "#FFF3CD", "stroke": "#856404" },
+    "positive":  { "fill": "#D4EDDA", "stroke": "#155724" },
+    "negative":  { "fill": "#F8D7DA", "stroke": "#721C24" }
+  },
+
+  "arrows": {
+    "primary":   { "strokeStyle": "solid",  "strokeColor": "#495057" },
+    "muted":     { "strokeStyle": "dashed", "strokeColor": "#ADB5BD" },
+    "accent":    { "strokeStyle": "dotted", "strokeColor": "#1A5276" },
+    "highlight": { "strokeStyle": "solid",  "strokeColor": "#856404" },
+    "negative":  { "strokeStyle": "solid",  "strokeColor": "#721C24" }
+  },
+
+  "type": {
+    "title":   { "fontSize": 22, "strokeColor": "#1e1e1e", "strokeWidth": 3 },
+    "heading": { "fontSize": 18, "strokeColor": "#1e1e1e" },
+    "body":    { "fontSize": 16, "strokeColor": "#495057" },
+    "caption": { "fontSize": 14, "strokeColor": "#495057" },
+    "label":   { "fontSize": 12, "strokeColor": "#495057" }
+  },
+
+  "layout": {
+    "canvasWidth": 1100,
+    "nodeW": 180,
+    "nodeH": 80,
+    "gapH": 80,
+    "gapV": 60,
+    "zoneGap": 40
+  },
+
+  "defaults": {
+    "fontFamily": 2,
+    "strokeWidth": 2,
+    "roughness": 0,
+    "roundness": { "type": 1 }
+  }
+}

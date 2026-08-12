@@ -1,0 +1,52 @@
+{
+  "name": "sequence-diagram",
+  "label": "时序图 (UML Sequence)",
+  "description": "UML 时序图模板：按客户端/网关/服务/基础设施分层填充色区分参与者，虚线生命线 + 激活条，实线同步/虚线返回。",
+
+  "nodes": {
+    "client":  { "fill": "#F0F4FF", "stroke": "#1e1e1e" },
+    "gateway": { "fill": "#F4F4F4", "stroke": "#1e1e1e" },
+    "service": { "fill": "#FFFFFF", "stroke": "#1e1e1e" },
+    "infra":   { "fill": "#FFF9F0", "stroke": "#1e1e1e" },
+    "lifeline":      { "fill": "#F8F9FA", "stroke": "#CED4DA" },
+    "activation":    { "fill": "#E9ECEF", "stroke": "#868E96" }
+  },
+
+  "arrows": {
+    "sync":   { "strokeStyle": "solid",  "strokeColor": "#495057", "endArrowhead": "arrow" },
+    "return": { "strokeStyle": "dashed", "strokeColor": "#ADB5BD", "endArrowhead": "arrow" },
+    "async":  { "strokeStyle": "solid",  "strokeColor": "#495057", "endArrowhead": "arrow" }
+  },
+
+  "type": {
+    "title":   { "fontSize": 22, "strokeColor": "#1e1e1e", "strokeWidth": 3 },
+    "heading": { "fontSize": 18, "strokeColor": "#1e1e1e" },
+    "body":    { "fontSize": 16, "strokeColor": "#495057" },
+    "label":   { "fontSize": 12, "strokeColor": "#495057" }
+  },
+
+  "layout": {
+    "direction": "horizontal",
+    "participantWidth": 150,
+    "participantHeight": 50,
+    "participantGap": 80,
+    "lifelineWidth": 2,
+    "activationBarWidth": 14,
+    "topBoxY": 20,
+    "bottomBoxY": 660,
+    "lifelineStartY": 70,
+    "activationStartY": 100,
+    "activationHeight": 520,
+    "arrowSpreadStart": 130,
+    "arrowSpreadStep": 60,
+    "titleY": 730,
+    "canvasWidth": 1340
+  },
+
+  "defaults": {
+    "fontFamily": 2,
+    "strokeWidth": 2,
+    "roughness": 0,
+    "fontSize": 16
+  }
+}

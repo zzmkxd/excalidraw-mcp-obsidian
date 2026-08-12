@@ -1,0 +1,46 @@
+{
+  "name": "mind-map",
+  "label": "思维导图",
+  "description": "思维导图专用预设：6 组低饱和度分支色系 + 中心节点强调 + 径向布局。思维导图是色彩规则例外——分支颜色辅助视觉扫描是其格式核心。",
+
+  "nodes": {
+    "center":    { "fill": "#FFFFFF", "stroke": "#495057" },
+    "branch1":   { "fill": "#D6EAF8", "stroke": "#1A5276" },
+    "branch2":   { "fill": "#FFF3CD", "stroke": "#856404" },
+    "branch3":   { "fill": "#D4EDDA", "stroke": "#155724" },
+    "branch4":   { "fill": "#F8D7DA", "stroke": "#721C24" },
+    "branch5":   { "fill": "#EBEBEB", "stroke": "#6C757D" },
+    "branch6":   { "fill": "#E8DAEF", "stroke": "#6C3483" }
+  },
+
+  "arrows": {
+    "primary": { "strokeStyle": "solid", "strokeColor": "#495057" },
+    "muted":   { "strokeStyle": "solid", "strokeColor": "#ADB5BD" }
+  },
+
+  "type": {
+    "title":   { "fontSize": 22, "strokeColor": "#1e1e1e", "strokeWidth": 3 },
+    "heading": { "fontSize": 18, "strokeColor": "#1e1e1e" },
+    "body":    { "fontSize": 16, "strokeColor": "#495057" },
+    "caption": { "fontSize": 14, "strokeColor": "#495057" },
+    "label":   { "fontSize": 12, "strokeColor": "#495057" }
+  },
+
+  "layout": {
+    "centerW": 180,
+    "centerH": 80,
+    "branchW": 140,
+    "branchH": 50,
+    "subBranchW": 120,
+    "subBranchH": 40,
+    "radialGap": 160,
+    "subRadialGap": 120
+  },
+
+  "defaults": {
+    "fontFamily": 2,
+    "strokeWidth": 2,
+    "roughness": 0,
+    "fontSize": 16
+  }
+}

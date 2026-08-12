@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+
+# Environment files
+.env
+
+# Runtime state
+.excalidraw-config.json
+
+# Logs
+*.log
+
+# Editor artifacts
+.cursor/
+.claude/
+.agent/
+.agents/
+
+# Development artifacts
+*.excalidraw
+test-output/
+test-output.png
+
+.DS_Store
+
+docs/
