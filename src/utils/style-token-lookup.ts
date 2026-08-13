@@ -6,7 +6,12 @@ export interface ResolvedStyleToken {
   fill?: string;
   stroke?: string;
   strokeStyle?: string;
+  /** layout.* / type.* scalar or JSON-serialized object */
+  value?: string | number;
 }
+
+const COLOR_SECTIONS = new Set(['nodes', 'surfaces', 'arrows']);
+const VALUE_SECTIONS = new Set(['layout', 'type']);
 
 /** Map template shorthand (node:accent) to JSON path (nodes.accent). */
 export function normalizeTokenRole(role: string): string {
@@ -40,12 +45,12 @@ export function resolveStyleTokens(
     const [section, key, ...rest] = path.split('.');
     if (!section || !key || rest.length > 0) {
       throw new Error(
-        `Invalid role "${role}" (normalized: "${path}"). Use "nodes.accent" or "node:accent".`
+        `Invalid role "${role}" (normalized: "${path}"). Use "nodes.accent", "node:accent", or "layout.nodeW".`
       );
     }
-    if (section !== 'nodes' && section !== 'surfaces' && section !== 'arrows') {
+    if (!COLOR_SECTIONS.has(section) && !VALUE_SECTIONS.has(section)) {
       throw new Error(
-        `Unknown section "${section}" in "${path}". Valid sections: nodes, surfaces, arrows.`
+        `Unknown section "${section}" in "${path}". Valid sections: nodes, surfaces, arrows, layout, type.`
       );
     }
     const bag = (preset as any)[section] as Record<string, any> | undefined;
@@ -58,6 +63,20 @@ export function resolveStyleTokens(
     }
     const entry = bag[key]!;
     const resolved: ResolvedStyleToken = { role, path };
+
+    if (VALUE_SECTIONS.has(section)) {
+      if (typeof entry === 'number' || typeof entry === 'string') {
+        resolved.value = entry;
+      } else if (entry && typeof entry === 'object') {
+        if (typeof entry.fontSize === 'number') resolved.value = entry.fontSize;
+        if (typeof entry.strokeColor === 'string') resolved.stroke = entry.strokeColor;
+        if (typeof entry.fill === 'string') resolved.fill = entry.fill;
+        if (resolved.value === undefined) resolved.value = JSON.stringify(entry);
+      }
+      tokens.push(resolved);
+      continue;
+    }
+
     if (typeof entry.fill === 'string') resolved.fill = entry.fill;
     if (typeof entry.stroke === 'string') resolved.stroke = entry.stroke;
     if (typeof entry.strokeColor === 'string') resolved.stroke = entry.strokeColor;

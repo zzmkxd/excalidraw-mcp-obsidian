@@ -1,7 +1,7 @@
 {
   "name": "clean-tech",
   "label": "简洁技术风格",
-  "description": "中性灰色调色板 + 结构化布局。适用于架构图、流程图、ER 图、数据流图。",
+  "description": "中性灰色调色板 + 分区/组件布局。适用于架构图、ER 图、数据流图。流程图请用 flowchart 预设；时序图请用 sequence-diagram。",
 
   "surfaces": {
     "light": { "fill": "#FFFFFF", "stroke": "#CCCCCC" },

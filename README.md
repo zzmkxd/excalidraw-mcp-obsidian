@@ -95,7 +95,11 @@ read_diagram_guide(template="architecture-diagram")
 ### 2. 应用风格预设并查色
 
 ```
-apply_style_preset(name="clean-tech")
+# 按图类型选预设（勿混用）：
+# flowchart → flowchart
+# architecture / er / dfd → clean-tech
+# sequence → sequence-diagram
+apply_style_preset(name="flowchart")  # 本例为流程图
 lookup_style_tokens(roles=["node:accent", "surface:mid", "arrow:muted"])
 ```
 

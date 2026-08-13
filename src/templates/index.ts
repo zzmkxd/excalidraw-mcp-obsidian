@@ -68,9 +68,27 @@ function loadAllTemplates(): void {
   }
 }
 
+function slugifyTemplateKey(name: string): string {
+  return name
+    .trim()
+    .toLowerCase()
+    .replace(/[_\s]+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+}
+
+/** Exact name, case-insensitive, or slug (e.g. flowchart → Flowchart). */
 export function getTemplate(name: string): ITemplate | undefined {
   loadAllTemplates();
-  return templatesCache.get(name);
+  const direct = templatesCache.get(name);
+  if (direct) return direct;
+
+  const needle = slugifyTemplateKey(name);
+  if (!needle) return undefined;
+
+  for (const [key, template] of templatesCache) {
+    if (slugifyTemplateKey(key) === needle) return template;
+  }
+  return undefined;
 }
 
 export function listTemplates(): ITemplate[] {

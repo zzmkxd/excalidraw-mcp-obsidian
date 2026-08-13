@@ -36,6 +36,16 @@ describe('TemplateRegistry', () => {
     }
   });
 
+  it('should resolve flowchart slug aliases to Flowchart template', () => {
+    const bySlug = getTemplate('flowchart');
+    const byName = getTemplate('Flowchart');
+    expect(bySlug).toBeDefined();
+    expect(bySlug?.name).toBe(byName?.name);
+    const guide = getFullGuide('flowchart');
+    expect(guide).toContain('flowchart');
+    expect(guide).not.toContain('No specific template found');
+  });
+
   it('should include available template names when requesting unknown template', () => {
     const result = getFullGuide('DefinitelyNonexistentTemplate123');
     expect(result).toContain('No specific template found');

@@ -152,6 +152,52 @@ export function runSceneChecklist(allElements: Iterable<ServerElement>): Checkli
     }
   }
 
+  // 7) Cross-layer arrows that visibly cross (X pattern) — warn only; no auto-reroute
+  const CROSS_LAYER_DY = 80;
+  const SAME_COLUMN_DX = 40;
+  const shapeById = new Map(shapes.map(s => [s.id, s]));
+  type BoundArrowSpan = { id: string; sx: number; sy: number; ex: number; ey: number };
+  const downward: BoundArrowSpan[] = [];
+  for (const a of arrows) {
+    const { startId, endId } = endpointIds(a);
+    if (!startId || !endId) continue;
+    const start = shapeById.get(startId);
+    const end = shapeById.get(endId);
+    if (!start || !end) continue;
+    const sx = start.x + (start.width || 0) / 2;
+    const sy = start.y + (start.height || 0) / 2;
+    const ex = end.x + (end.width || 0) / 2;
+    const ey = end.y + (end.height || 0) / 2;
+    if (ey - sy < CROSS_LAYER_DY) continue; // top → bottom cross-layer only
+    downward.push({ id: a.id, sx, sy, ex, ey });
+  }
+  const reportedPairs = new Set<string>();
+  for (let i = 0; i < downward.length; i++) {
+    for (let j = i + 1; j < downward.length; j++) {
+      const A = downward[i]!;
+      const B = downward[j]!;
+      // Ignore near-vertical same-column spans
+      if (Math.abs(A.sx - A.ex) < SAME_COLUMN_DX && Math.abs(B.sx - B.ex) < SAME_COLUMN_DX) {
+        continue;
+      }
+      const startsOrdered = A.sx < B.sx;
+      const endsCrossed = startsOrdered ? A.ex > B.ex : B.ex > A.ex;
+      if (!endsCrossed) continue;
+      // Require meaningful horizontal separation at both ends
+      if (Math.abs(A.sx - B.sx) < SAME_COLUMN_DX || Math.abs(A.ex - B.ex) < SAME_COLUMN_DX) {
+        continue;
+      }
+      const pairKey = [A.id, B.id].sort().join(':');
+      if (reportedPairs.has(pairKey)) continue;
+      reportedPairs.add(pairKey);
+      warnings.push({
+        code: 'arrows_cross_layer',
+        message: `Arrows "${A.id}" and "${B.id}" cross between layers (start.x order ≠ end.x order).`,
+        elementIds: [A.id, B.id],
+      });
+    }
+  }
+
   return warnings;
 }
 

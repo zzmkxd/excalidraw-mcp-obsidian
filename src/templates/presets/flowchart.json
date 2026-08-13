@@ -1,0 +1,55 @@
+{
+  "name": "flowchart",
+  "label": "流程图 (Flowchart)",
+  "description": "流程图专用：起止/处理/扁长菱形判定。填色取自 clean-tech 语义色；描边与架构/时序同族中性灰（#495057），靠形状区分角色。",
+
+  "surfaces": {
+    "lane":  { "fill": "#F5F5F5", "stroke": "#CCCCCC" },
+    "group": { "fill": "#F8F8F0", "stroke": "#CCCCCC" }
+  },
+
+  "nodes": {
+    "start":      { "fill": "#D4EDDA", "stroke": "#495057" },
+    "process":    { "fill": "#FFFFFF", "stroke": "#495057" },
+    "decision":   { "fill": "#FFF3CD", "stroke": "#495057" },
+    "end":        { "fill": "#D6EAF8", "stroke": "#495057" },
+    "error":      { "fill": "#F8D7DA", "stroke": "#495057" },
+    "note":       { "fill": "#EBEBEB", "stroke": "#6C757D" },
+    "subprocess": { "fill": "#FFFFFF", "stroke": "#ADB5BD" }
+  },
+
+  "arrows": {
+    "flow":   { "strokeStyle": "solid",  "strokeColor": "#495057", "endArrowhead": "arrow" },
+    "branch": { "strokeStyle": "solid",  "strokeColor": "#495057", "endArrowhead": "arrow" },
+    "reject": { "strokeStyle": "solid",  "strokeColor": "#721C24", "endArrowhead": "arrow" },
+    "retry":  { "strokeStyle": "dashed", "strokeColor": "#ADB5BD", "endArrowhead": "arrow" }
+  },
+
+  "type": {
+    "title":   { "fontSize": 22, "strokeColor": "#1e1e1e", "strokeWidth": 3 },
+    "heading": { "fontSize": 18, "strokeColor": "#1e1e1e" },
+    "body":    { "fontSize": 16, "strokeColor": "#495057" },
+    "caption": { "fontSize": 14, "strokeColor": "#495057" },
+    "label":   { "fontSize": 12, "strokeColor": "#495057" }
+  },
+
+  "layout": {
+    "direction": "vertical",
+    "nodeW": 200,
+    "nodeH": 56,
+    "diamondW": 240,
+    "diamondH": 100,
+    "gapV": 56,
+    "gapH": 80,
+    "zoneGap": 40,
+    "canvasWidth": 1000
+  },
+
+  "defaults": {
+    "fontFamily": 2,
+    "strokeWidth": 2,
+    "roughness": 0,
+    "roundness": { "type": 1 },
+    "fontSize": 16
+  }
+}

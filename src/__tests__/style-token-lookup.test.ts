@@ -29,6 +29,21 @@ describe('resolveStyleTokens', () => {
     expect(tokens[1]!.strokeStyle).toBe('dashed');
   });
 
+  it('resolves flowchart decision and flat diamond layout', () => {
+    const { preset, tokens } = resolveStyleTokens(
+      ['node:decision', 'arrow:branch', 'layout.nodeW', 'layout.diamondW', 'layout.diamondH'],
+      'flowchart',
+    );
+    expect(preset).toBe('flowchart');
+    expect(tokens[0]!.fill).toBe('#FFF3CD');
+    expect(tokens[0]!.stroke).toBe('#495057');
+    expect(tokens[1]!.stroke).toBe('#495057');
+    expect(tokens[1]!.strokeStyle).toBe('solid');
+    expect(tokens[2]!.value).toBe(200);
+    expect(tokens[3]!.value).toBe(240);
+    expect(tokens[4]!.value).toBe(100);
+  });
+
   it('throws with available keys on unknown role', () => {
     expect(() => resolveStyleTokens(['node:nope'], 'clean-tech')).toThrow(/Available nodes/);
   });

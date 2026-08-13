@@ -29,6 +29,7 @@ async function handle(ctx: HandlerContext, args: any) {
       if (t.fill) parts.push(`fill ${t.fill}`);
       if (t.stroke) parts.push(`stroke ${t.stroke}`);
       if (t.strokeStyle) parts.push(`strokeStyle ${t.strokeStyle}`);
+      if (t.value !== undefined) parts.push(`value ${t.value}`);
       return `  ${parts.join(' | ')}`;
     }),
   ];
